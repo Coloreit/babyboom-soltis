@@ -6,12 +6,14 @@ const Item = ({ id, name, img, price }) => {
 
     return(
         <div className= 'galeria'>
-            <h3>{name}</h3>
-            <img src={img} alt={name}/>
-            <p>${price}</p>
-            <p>
-                <Link to={`/item/${id}`}>Ver detalle</Link>
-            </p>
+            <div className= 'tarjeta'>
+                <h3>{name}</h3>
+                <img src={img} alt={name}/>
+                <p>${price}</p>
+                <p>
+                    <Link to={`/item/${id}`}>Ver detalle</Link>
+                </p>
+            </div>
         </div>
     )
 }

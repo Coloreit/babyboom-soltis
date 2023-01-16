@@ -1,0 +1,42 @@
+.galeria {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.tarjeta {
+    box-shadow: 1px 5px 15px #CCC;
+    width: 15em;
+    height: auto;
+    border-radius: 3px;
+    padding: 2em;
+    margin: 1em;
+}
+.tarjeta img {
+    max-width: 100%;
+    height: auto !important;
+    text-align: center;
+}
+.tarjeta h3 {
+    font-size: 30px;
+}
+.tarjeta p {
+    font-size: 20px;
+}
+button {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    padding: 0.5em 1.5em;
+    margin: 1em 0 0 0;
+    background: #34c4cc;
+    cursor: pointer;
+    transition: background ease-in .25s;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+}
+button:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #2B2D42;
+}
