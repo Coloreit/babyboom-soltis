@@ -1,3 +1,24 @@
-.Cart img {
-    height: 50px;
+.CartWidget {
+    width: auto;
+    padding: 8px 20px;
+    font-size: 8px;
+    background: rgba(255, 255, 255, 0.301);
+    border-radius: 8px;
+    flex: none;
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+    font-size: medium;
+}
+
+.CartWidget img {
+    height: 40px;
 }

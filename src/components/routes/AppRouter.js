@@ -1,0 +1,17 @@
+import { Routes, Route } from 'react-router-dom';
+import ItemListContainer from '../ItemListContainer/ItemListContainer';
+import ItemDetailConteiner from '../ItemDetailContainer/ItemDetailContainer';
+import Cart from '../Cart/Cart';
+
+const AppRouter = () => {
+    return (
+        <Routes>
+            <Route path='/' element={<ItemListContainer greeting='Estos son nuestros productos'/>} />
+            <Route path='/category/:categoryId' element={<ItemListContainer />} />
+            <Route path='/item/:productId' element={<ItemDetailConteiner />} />
+            <Route path='/cart' element={<Cart />} />
+        </Routes>
+    )
+}
+
+export default AppRouter
