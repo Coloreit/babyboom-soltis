@@ -41,7 +41,7 @@ const ItemListContainer = ({greeting}) => {
 
     return(
         <div>
-            <h2>{categoryId ? `Estos son nuestros productos de ${categoryId}`: 'Estos son todos nuestros productos'}</h2>
+            <h2>{categoryId ? `Estos son nuestros productos de la categoría ${categoryId}`: 'Estos son todos nuestros productos'}</h2>
             <ItemList products={products}/>
         </div>
     )

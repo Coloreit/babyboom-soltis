@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import AppRouter from './components/routes/AppRouter';
 import { CartProvider } from './context/CartContext';
