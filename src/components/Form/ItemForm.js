@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom"
 import './ItemForm.css'
 
 const ItemForm = () => {
-    const [name, setName] = useState("")
-    const [phone, setPhone] = useState("")
-    const [email, setEmail] = useState("")
+
+    const [user, setUser] = useState({ name: "", email: "", phone: "" });
+
+    const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+    };
 
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState('')
@@ -21,9 +24,9 @@ const ItemForm = () => {
         try{
             const objOrder = {
                 buyer: {
-                    name: 'Nombre',
-                    phone: 'Teléfono',
-                    email: 'email@emial.com'
+                    name: user.name,
+                    phone: user.phone,
+                    email: user.email
                 }, 
                 items: cart,
                 total
@@ -32,7 +35,7 @@ const ItemForm = () => {
             const batch = writeBatch(db)
     
             const ids = cart.map(prod => prod.id)
-            const names = cart.map(prod => prod.name)
+            const prodName = cart.map(prod => prod.name)
     
             const productsRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
     
@@ -67,7 +70,7 @@ const ItemForm = () => {
                 }, 5000)
                 console.log(id);
             } else {
-                alert (`No quedan más ${names} disponibles en stock`)
+                alert (`No quedan más ${prodName} disponibles en stock`)
                 clearCart()
             }
         } catch (error) {
@@ -84,7 +87,7 @@ const ItemForm = () => {
     if(orderId) {
         return (
             <div>
-                <h2>¡Gracias {name} por tu compra!</h2>
+                <h2>¡Gracias {user.name} por tu compra!</h2>
                 <h3>El Id de la misma es: {orderId}</h3>
             </div>
         )
@@ -100,9 +103,9 @@ const ItemForm = () => {
         <div className="ItemForm">
             <h2>Checkout</h2>
             <h3>Su compra suma un total de: ${total} </h3>
-            <input type='text' value={name} placeholder='Nombre' onChange={(event) => setName(event.target.value)}/>
-            <input type='text' value={phone} placeholder='Teléfono' onChange={(event) => setPhone(event.target.value)}/>
-            <input type='text' value={email} placeholder='Email' onChange={(event) => setEmail(event.target.value)}/>
+            <input type='text' placeholder='Nombre' name="name" onChange={handleChange}/>
+            <input type='text' placeholder='Teléfono' name="phone" onChange={handleChange}/>
+            <input type='text' placeholder='Email' name="email" onChange={handleChange}/>
             <button onClick={createOrder}>Generar Orden</button>
         </div>
     )

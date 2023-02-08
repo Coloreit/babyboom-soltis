@@ -6,6 +6,13 @@ import { Link } from "react-router-dom"
 
 const Cart = () => {
     const { cart } = useContext(CartContext)
+
+    if(cart.length === 0) {
+        return(
+            <h3>No hay productos en el carrito</h3>
+        )
+    }
+    
     return (
         <div className='Cart'>
             <h2>Carrito de compras</h2>
