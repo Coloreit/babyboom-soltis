@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB-R8TWpQN0FSPAN-ZrUMxDRnLDdS-f-B0",
-    authDomain: "babyboom-back.firebaseapp.com",
-    projectId: "babyboom-back",
-    storageBucket: "babyboom-back.appspot.com",
-    messagingSenderId: "483691803250",
-    appId: "1:483691803250:web:cba7ba153721789d0608eb"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);
