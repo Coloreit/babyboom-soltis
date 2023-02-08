@@ -1,40 +1,24 @@
-import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
-import { getDoc, doc } from "firebase/firestore"
-import { db } from "../../services/firebase/firebaseConfig"
+import { useTitle } from "../../hooks/useTitle"
+import { getProductsbyId } from "../../services/firebase/firestore/products"
+import { useAsync } from "../../hooks/useAsync"
 
 const ItemDetailConteiner = () => {
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
-
     const { productId } = useParams()
 
-    useEffect(() => {
-        document.title = 'Detalle del producto'
-    }, [])
+    useTitle('Detalle del producto', [])
 
-    useEffect(() => {
-        (async () => {
-            const productRef = doc(db, 'products', productId)
+    const getProductsByCategoryId = () => getProductsbyId(productId)
 
-            try {
-                const snapshot = await getDoc(productRef)
-    
-                const fields = snapshot.data()
-                const productAdapted = { id: snapshot.id, ...fields}
-    
-                setProduct(productAdapted)
-            } catch (error) {
-                console.log(error)
-            } finally {
-                setLoading(false)
-            }
-        })()
-    }, [productId])
+    const { data: product, error, loading } = useAsync(getProductsByCategoryId , [productId])
 
     if(loading) {
-        return <h1>Cargando...</h1>
+        return <h2>Cargando...</h2>
+    }
+
+    if(error) {
+        return <h2>Se produjo un error al cargar los productos</h2>
     }
 
     return(
